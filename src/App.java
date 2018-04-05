@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String args[]) throws Exception{
-        System.setProperty("java.net.preferIPv4Stack", "true");
         DistributedMap distro = new DistributedMap();
         boolean run = true;
         Scanner scanner = new Scanner(System.in);

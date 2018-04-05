@@ -21,7 +21,6 @@ public class DistributedMap implements SimpleStringMap{
     private JChannel mapChannel;
 
     public DistributedMap() throws Exception {
-        System.setProperty("java.net.preferIPv4Stack", "true");
         mapChannel = new JChannel(false);
 
         ProtocolStack stack=new ProtocolStack();
