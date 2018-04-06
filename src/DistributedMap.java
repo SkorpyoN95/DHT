@@ -8,10 +8,7 @@ import java.util.Map;
 
 import org.jgroups.*;
 import org.jgroups.protocols.*;
-import org.jgroups.protocols.pbcast.GMS;
-import org.jgroups.protocols.pbcast.NAKACK2;
-import org.jgroups.protocols.pbcast.STABLE;
-import org.jgroups.protocols.pbcast.STATE;
+import org.jgroups.protocols.pbcast.*;
 import org.jgroups.stack.ProtocolStack;
 import org.jgroups.util.Util;
 
@@ -40,6 +37,8 @@ public class DistributedMap implements SimpleStringMap{
                 .addProtocol(new MFC())
                 .addProtocol(new FRAG2())
                 .addProtocol(new STATE());
+                //.addProtocol(new SEQUENCER())
+                //.addProtocol(new FLUSH());
 
         stack.init();
 

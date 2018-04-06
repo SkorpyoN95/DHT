@@ -14,18 +14,20 @@ public class MergeHandler extends Thread{
     public MergeHandler(JChannel ch, MergeView view) {
         this.ch = ch;
         this.view = view;
-        this.random = new Random().nextInt(2);
+        this.random = new Random().nextInt(this.view.getSubgroups().size());
     }
 
 
     public void run() {
+        System.out.println("MergeHandler - start");
         List<View> subgroups = view.getSubgroups();
         View tmp_view = subgroups.get(random);
+        Address rep = tmp_view.getCoord();
         Address local_addr = ch.getAddress();
         if(!tmp_view.getMembers().contains(local_addr)) {
             System.out.println("Not member of the partition (" + tmp_view + "), will re-acquire the state");
             try {
-                ch.getState(local_addr, 100000);
+                ch.getState(rep, 100000);
             }
             catch(Exception ex) {
                 System.err.println("Get state fail");
